@@ -1,0 +1,13 @@
+# dependencies
+/front-end/node_modules
+/back-end/node_modules
+
+# production
+/front-end/build
+/back-end/dist
+
+# config file
+/back-end/.env
+
+# debug
+npm-debug.log*
