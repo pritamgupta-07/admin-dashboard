@@ -1,6 +1,10 @@
 # Dashboard MERN
 A simple mern stack dashboard web app with crud operation.
 
+## Preview
+
+- Project preview https://admin-dashboard-s3zt.onrender.com
+
 ## Features
 
 - User Authentication: The app includes user authentication and authorization mechanisms to ensure secure access to the dashboard functionality.
@@ -30,3 +34,37 @@ A simple mern stack dashboard web app with crud operation.
 - React CSV: A library for handling CSV (Comma-Separated Values) data in React.
 - React Router DOM: A library for handling routing in React applications.
 - React Pro Sidebar: A sidebar component for building professional dashboards in React.
+
+## Prerequisites
+
+- Nodejs (version: >=16.0.0)
+- NPM (version: >=7.0.0)
+- Git
+
+## Setup
+
+- Open your terminal or command prompt.
+- Navigate to the directory where you want to clone the repository.
+- Run the following command to clone the repository:
+- > git clone https://github.com/pritam-guptaa/adminDashboard.git
+
+- Change into the project directory:
+- > cd adminDashboard
+
+- Run the following command to install the project dependencies:
+- > npm install
+
+- Create a (.env) file in backend folder.
+- Add configuration variables as required.
+
+- Start development server:
+- > npm start
+- The adminDashboard application should now be running at http://localhost:3000 in your browser.
+- Do similarly with backend server.
+
+## Info
+
+- Make sure to update api url to your own.
+- Install necessary dependencies if needed.
+
+
