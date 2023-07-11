@@ -10,9 +10,13 @@ async function handleGetAvatar(req, res) {
     if (author) {
       // finding avatar in DB & sending response
       const avatar = await avatarModel.findOne({ author });
-      res.status(200).send(avatar);
+      if(avatar){
+        res.status(200).send(avatar);
+      }else{
+        res.status(200).send({msg: 'avatar does not exist'})
+      }
     } else {
-      res.status(400).send({ msg: "invalid author id" });
+      res.status(400).send({ msg: "enter author id" });
     }
   } catch (error) {
     //error handling

@@ -2,7 +2,6 @@ import Header from "../../components/Header";
 import {
   Box,
   Button,
-  IconButton,
   Typography,
   useMediaQuery,
   useTheme,
@@ -74,9 +73,12 @@ const Dashboard = () => {
   // handling dashboard data request
   const handleDashboardData = useCallback(async () => {
     try {
-      const { data } = await axios.get("https://dashboard-cxq3.onrender.com/dashboard", {
-        headers,
-      });
+      const { data } = await axios.get(
+        "https://dashboard-cxq3.onrender.com/dashboard",
+        {
+          headers,
+        }
+      );
 
       // updating data
       setDashboardData([
@@ -100,9 +102,12 @@ const Dashboard = () => {
   // handling transaction data request
   const handleTransactionData = useCallback(async () => {
     try {
-      const response = await axios.get("https://dashboard-cxq3.onrender.com/transactions", {
-        headers,
-      });
+      const response = await axios.get(
+        "https://dashboard-cxq3.onrender.com/transactions",
+        {
+          headers,
+        }
+      );
       // updating data
       setTransactions(response.data);
     } catch (error) {
@@ -133,7 +138,12 @@ const Dashboard = () => {
             <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
 
             <Box>
-              <CSVLink data={dashboardData} headers={csvHeaders} filename='dashboard-report.csv'>
+              <CSVLink
+                data={dashboardData}
+                headers={csvHeaders}
+                filename="dashboard-report.csv"
+                style={{textDecoration: 'none'}}
+              >
                 <Button
                   sx={{
                     backgroundColor: colors.blueAccent[700],
@@ -272,14 +282,6 @@ const Dashboard = () => {
                   >
                     ${generatedRevenue}
                   </Typography>
-                </Box>
-
-                <Box>
-                  <IconButton>
-                    <DownloadOutlinedIcon
-                      sx={{ fontSize: "24px", color: colors.greenAccent[500] }}
-                    />
-                  </IconButton>
                 </Box>
               </Box>
               <Box height="180px" mt="-20px">

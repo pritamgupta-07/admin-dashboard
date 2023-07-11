@@ -1,5 +1,5 @@
 import { ResponsiveLine } from "@nivo/line";
-import { useTheme, Box } from "@mui/material";
+import { useTheme, Box, useMediaQuery } from "@mui/material";
 import { tokens } from "../theme";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import axios from "axios";
@@ -10,6 +10,7 @@ const Line = ({ isDashboard = false }) => {
   // theme setup
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const isTablet = useMediaQuery("(max-width: 960px)");
   const { token } = useAuthCredentials();
 
   const [lineChartData, setLineChartData] = useState([]);
@@ -23,9 +24,12 @@ const Line = ({ isDashboard = false }) => {
   // handling line chart request
   const handleGetLineChart = useCallback(async () => {
     try {
-      const response = await axios.get("https://dashboard-cxq3.onrender.com/line-chart", {
-        headers,
-      });
+      const response = await axios.get(
+        "https://dashboard-cxq3.onrender.com/line-chart",
+        {
+          headers,
+        }
+      );
       // updating data
       setLineChartData(response.data);
       setIsLoading(false);
@@ -76,7 +80,12 @@ const Line = ({ isDashboard = false }) => {
             },
           }}
           colors={["#2e9ba0", "#00FF00", "#00a1ff"]}
-          margin={{ top: 50, right: 110, bottom: 70, left: 60 }}
+          margin={{
+            top: 50,
+            right: 30,
+            bottom: isDashboard ? 70 : 90,
+            left: 45,
+          }}
           xScale={{ type: "point" }}
           yScale={{
             type: "linear",
@@ -93,9 +102,9 @@ const Line = ({ isDashboard = false }) => {
             orient: "bottom",
             tickSize: 5,
             tickPadding: 5,
-            tickRotation: 0,
+            tickRotation: isTablet ? 40 : 0,
             legend: isDashboard ? undefined : "transportation",
-            legendOffset: (36, 36),
+            legendOffset: (36, 55),
             legendPosition: "middle",
           }}
           axisLeft={{
@@ -150,7 +159,7 @@ const Line = ({ isDashboard = false }) => {
               direction: "row",
               justify: false,
               translateX: 0,
-              translateY: 65,
+              translateY: isDashboard ? 70 : 90,
               itemsSpacing: 0,
               itemDirection: "left-to-right",
               itemWidth: 80,

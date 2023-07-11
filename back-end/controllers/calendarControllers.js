@@ -9,7 +9,7 @@ async function handleGetCalendarEvent(req, res) {
       res.status(200).send({ msg: "event does not exist" });
     }
   } catch (error) {
-    res.status(500).send({error:'something wrong'})
+    res.status(500).send({ error: "something wrong" });
     console.log(error);
   }
 }
@@ -25,7 +25,37 @@ async function handleCreateCalendarEvent(req, res) {
       res.status(400).send({ msg: "please provide title" });
     }
   } catch (error) {
-    res.status(500).send({error:'something wrong'})
+    res.status(500).send({ error: "something wrong" });
+    console.log(error);
+  }
+}
+
+async function handleUpdateCalendarEvent(req, res) {
+  try {
+    const eventId = req.params.id;
+    const { startStr, endStr } = req.body;
+    if (eventId) {
+      if (startStr && endStr) {
+        const eventUpdated = await calendarModel.findOneAndUpdate(
+          { _id: eventId },
+          { start: startStr, end: endStr, expirationDate: endStr },
+          { new: true }
+        );
+        if (eventUpdated) {
+          res.status(200).send({ msg: "event updated" });
+        } else {
+          res
+            .status(200)
+            .send({ msg: "something wrong please try again later" });
+        }
+      } else {
+        res.status(400).send({ msg: "please enter event data" });
+      }
+    } else {
+      res.status(400).send({ msg: "please enter event id" });
+    }
+  } catch (error) {
+    res.status(500).send({ error: "something wrong" });
     console.log(error);
   }
 }
@@ -37,8 +67,8 @@ async function handleDeleteCalendarEvent(req, res) {
     await event.deleteOne();
     res.status(200).send({ msg: "deleted successfully" });
   } catch (error) {
-    res.status(500).send({error:'something wrong'})
-    console.log(error)
+    res.status(500).send({ error: "something wrong" });
+    console.log(error);
   }
 }
 
@@ -46,4 +76,5 @@ export {
   handleGetCalendarEvent,
   handleCreateCalendarEvent,
   handleDeleteCalendarEvent,
+  handleUpdateCalendarEvent,
 };

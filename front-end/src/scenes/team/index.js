@@ -18,7 +18,7 @@ import Header from "../../components/Header";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import Loader from "../../components/Loader";
-import Form from "../../components/UserForm";
+import UserForm from "../../components/UserForm";
 import useAuthCredentials from "../../auth/auth";
 import { toast } from "react-toastify";
 
@@ -152,7 +152,7 @@ const Team = () => {
             onClose={() => {
               setIsDialogOpen(false);
             }}
-            id='update-dialog'
+            id="update-dialog"
           >
             <DialogTitle
               id="team"
@@ -173,7 +173,7 @@ const Team = () => {
                     title="Update details"
                     subtitle="update user profile "
                   />
-                  <Form
+                  <UserForm
                     isTeamUpdate={true}
                     prevValue={selectedTeamProfile}
                     setIsDialogOpen={setIsDialogOpen}
@@ -183,7 +183,7 @@ const Team = () => {
                 </>
               ) : (
                 <DialogContentText
-                  variant="h3"
+                  variant="h5"
                   sx={{ color: colors.grey[100], mb: "30px" }}
                 >
                   please select one of the following options.
@@ -253,7 +253,7 @@ const Team = () => {
             onClose={() => {
               setIsOwnProfileSelected(false);
             }}
-            id='own-profile-selected'
+            id="own-profile-selected"
           >
             <DialogContent sx={{ backgroundColor: colors.primary[400] }}>
               <DialogTitle

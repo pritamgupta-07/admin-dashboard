@@ -60,9 +60,13 @@ const Profile = () => {
 
     try {
       const response = await toast.promise(
-        axios.post(`https://dashboard-cxq3.onrender.com/avatar/upload/${id}`, formData, {
-          headers,
-        }),
+        axios.post(
+          `https://dashboard-cxq3.onrender.com/avatar/upload/${id}`,
+          formData,
+          {
+            headers,
+          }
+        ),
         {
           pending: "Uploading...",
           success: "Uploaded successfully",
@@ -393,7 +397,12 @@ const Profile = () => {
 
           {/* Logout && settings button */}
 
-          <Box>
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            mb="20px"
+          >
             <Button
               onClick={handleLogout}
               variant="outlined"
@@ -406,7 +415,7 @@ const Profile = () => {
             >
               logout
             </Button>
-            <Link to="/settings">
+            <Link to="/settings" style={{ textDecoration: "none" }}>
               <Button
                 variant="contained"
                 sx={{

@@ -9,7 +9,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { tokens } from "../../theme";
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import CloseIcon from "@mui/icons-material/Close";
 import dashboard, { data, pages, charts } from "../../utils/menuItems.js";
 import axios from "axios";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -36,7 +36,9 @@ const SideBar = () => {
   const handleUserImage = useCallback(async () => {
     try {
       const response = await axios.get(
-        `https://dashboard-cxq3.onrender.com/avatar/${id ? id : undefined}`,
+        `https://dashboard-cxq3.onrender.com/avatar/${
+          id ? id : "randomstring"
+        }`,
         {
           headers,
         }
@@ -57,7 +59,7 @@ const SideBar = () => {
   useEffect(() => {
     handleUserImage();
   }, [handleUserImage]);
-  
+
   return (
     <Box
       sx={{
@@ -77,10 +79,13 @@ const SideBar = () => {
             height: "100%",
             position: "fixed",
             top: "0",
-            left: "0",
+            left: isMobile ? (toggleSidebar ? "0" : "-100vw") : "0",
             bottom: "0",
-            width: isMobile ? (toggleSidebar ? "100vw" : "0vw") : "250px",
-            transition: "all .2s !important",
+            width: isMobile ? "100vw" : "250px",
+            transition: "all .5s ease-in-out !important",
+            "::-webkit-scrollbar": {
+              width: isMobile ? "0px" : "",
+            },
           },
         }}
       >
@@ -108,7 +113,7 @@ const SideBar = () => {
             <Typography
               variant="h3"
               color={colors.grey[100]}
-              sx={{ padding: "5px 0px 0px 15px" }}
+              sx={{ padding: "5px 0px 0px 15px", fontWeight: "bold" }}
             >
               DASHBOARD
             </Typography>
@@ -119,7 +124,7 @@ const SideBar = () => {
                   setToggleSidebar(false);
                 }}
               >
-                <MenuOutlinedIcon />
+                <CloseIcon sx={{ fontSize: "26px" }} />
               </IconButton>
             )}
           </Box>
@@ -197,6 +202,13 @@ const SideBar = () => {
                     };
                   }}
                   to={category.route}
+                  onClick={
+                    isMobile
+                      ? () => {
+                          setToggleSidebar(false);
+                        }
+                      : undefined
+                  }
                 />
               }
             >
@@ -227,6 +239,13 @@ const SideBar = () => {
                     };
                   }}
                   to={category.route}
+                  onClick={
+                    isMobile
+                      ? () => {
+                          setToggleSidebar(false);
+                        }
+                      : undefined
+                  }
                 />
               }
             >
@@ -258,6 +277,13 @@ const SideBar = () => {
                     };
                   }}
                   to={category.route}
+                  onClick={
+                    isMobile
+                      ? () => {
+                          setToggleSidebar(false);
+                        }
+                      : undefined
+                  }
                 />
               }
             >
@@ -290,6 +316,13 @@ const SideBar = () => {
                   }}
                   to={category.route}
                 />
+              }
+              onClick={
+                isMobile
+                  ? () => {
+                      setToggleSidebar(false);
+                    }
+                  : undefined
               }
             >
               <Typography>{category.name}</Typography>

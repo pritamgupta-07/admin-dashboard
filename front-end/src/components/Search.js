@@ -68,17 +68,17 @@ const Search = () => {
   }, [headers, query]);
 
   useEffect(() => {
-    let queryInterval = null
+    let queryInterval = null;
 
     if (query.length > 0) {
-       queryInterval = setInterval(()=>{
+      queryInterval = setInterval(() => {
         handleSearchResults();
-      },1000)
-      
+      }, 500);
     }
-  
-    return ()=>{clearInterval(queryInterval)}
-    
+
+    return () => {
+      clearInterval(queryInterval);
+    };
   }, [query, handleSearchResults]);
 
   // columns for team

@@ -56,9 +56,12 @@ const Calendar = () => {
   // Requesting all Events from the Database
   const handleGetEvent = useCallback(async () => {
     try {
-      const response = await axios.get("https://dashboard-cxq3.onrender.com/calendar", {
-        headers,
-      });
+      const response = await axios.get(
+        "https://dashboard-cxq3.onrender.com/calendar",
+        {
+          headers,
+        }
+      );
       setEvents(response.data);
       setIsLoading(false);
     } catch (error) {
@@ -99,6 +102,34 @@ const Calendar = () => {
       setInputDialogOpen(false);
       setCurrentEvent({});
       setNote("");
+    }
+  };
+
+  // updating event on drag & drop
+  const handleEventDrop = async (event) => {
+    try {
+      const {
+        event: {
+          endStr,
+          startStr,
+          extendedProps: { _id },
+        },
+      } = event;
+      const eventData = {
+        startStr,
+        endStr,
+      };
+
+      const { data } = await axios.put(
+        `https://dashboard-cxq3.onrender.com/calendar/update/${_id}`,
+        eventData,
+        { headers }
+      );
+      toast.success(data.msg);
+      handleGetEvent();
+    } catch (error) {
+      console.error(error);
+      toast.error("failed! please try again later");
     }
   };
 
@@ -271,6 +302,7 @@ const Calendar = () => {
             <Box
               flex="1 1 100%"
               ml={isTablet ? "" : "15px"}
+              mb={isTablet ? "40px" : ""}
               sx={{
                 "& .fc-theme-standard .fc-list-day-cushion ": {
                   backgroundColor: colors.primary[400],
@@ -318,10 +350,12 @@ const Calendar = () => {
                 selectable={true}
                 selectMirror={true}
                 dayMaxEvents={true}
+                eventDrop={handleEventDrop}
                 select={(selected) => {
                   setInputDialogOpen(true);
                   setCurrentEvent(selected);
                 }}
+                longPressDelay={1}
                 events={events}
                 eventClick={(selected) => {
                   setDeleteEvent(selected.event.extendedProps._id);
