@@ -26,7 +26,6 @@
     "node": ">=v16.20.0"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "nodemon": "^3.0.1"
   }
 }
