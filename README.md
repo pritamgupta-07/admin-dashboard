@@ -13,7 +13,7 @@ A simple mern stack dashboard web app with crud operation.
 - Update: Users can update the details of the records stored in the dashboard.
 - Delete: The app allows users to delete records from the dashboard.
 
-## Technologies Used
+## Technologies/Library Used
 
 - MongoDB: A NoSQL database used to store the data for the dashboard app.
 - Express.js: A backend framework for Node.js, used to build the RESTful API for data manipulation.
