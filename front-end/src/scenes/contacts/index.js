@@ -24,7 +24,7 @@ const Contacts = () => {
   // handling contacts api
   const handleGetContacts = useCallback(async ()=> {
     try {
-      const contactResult = await axios.get("https://dashboard-cxq3.onrender.com/contacts",{headers});
+      const contactResult = await axios.get(`${window.env.API_URL}/contacts`,{headers});
       // updating data
       setContacts(contactResult.data);
       setIsLoading(false);

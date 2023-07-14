@@ -31,7 +31,7 @@ const Login = () => {
           password,
         };
         const response = await toast.promise(axios.post(
-          "https://dashboard-cxq3.onrender.com/login",
+          `${window.env.API_URL}/login`,
           loginData,
           { headers }
         ),

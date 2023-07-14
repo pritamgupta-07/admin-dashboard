@@ -23,7 +23,7 @@ const Pie = () => {
   // handling Pie chart Data request
   const handlePieData = useCallback(async () => {
     try {
-      const response = await axios.get("https://dashboard-cxq3.onrender.com/pie-chart", {
+      const response = await axios.get(`${window.env.API_URL}/pie-chart`, {
         headers,
       });
       // updating data

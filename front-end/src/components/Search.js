@@ -35,15 +35,15 @@ const Search = () => {
   const handleSearchResults = useCallback(async () => {
     try {
       const teamSearch = await axios.get(
-        `https://dashboard-cxq3.onrender.com/search/team/${query}`,
+        `${window.env.API_URL}/search/team/${query}`,
         { headers }
       );
       const invoiceSearch = await axios.get(
-        `https://dashboard-cxq3.onrender.com/search/invoice/${query}`,
+        `${window.env.API_URL}/search/invoice/${query}`,
         { headers }
       );
       const contactSearch = await axios.get(
-        `https://dashboard-cxq3.onrender.com/search/contact/${query}`,
+        `${window.env.API_URL}/search/contact/${query}`,
         { headers }
       );
 

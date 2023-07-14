@@ -57,7 +57,7 @@ const Calendar = () => {
   const handleGetEvent = useCallback(async () => {
     try {
       const response = await axios.get(
-        "https://dashboard-cxq3.onrender.com/calendar",
+        `${window.env.API_URL}/calendar`,
         {
           headers,
         }
@@ -84,7 +84,7 @@ const Calendar = () => {
     };
     try {
       const response = await axios.post(
-        "https://dashboard-cxq3.onrender.com/calendar/create-event",
+        `${window.env.API_URL}/calendar/create-event`,
         eventData,
         { headers }
       );
@@ -121,7 +121,7 @@ const Calendar = () => {
       };
 
       const { data } = await axios.put(
-        `https://dashboard-cxq3.onrender.com/calendar/update/${_id}`,
+        `${window.env.API_URL}/calendar/update/${_id}`,
         eventData,
         { headers }
       );
@@ -137,7 +137,7 @@ const Calendar = () => {
   const handleDeleteEvent = async () => {
     try {
       const response = await axios.delete(
-        `https://dashboard-cxq3.onrender.com/calendar/delete/${deleteEvent}`,
+        `${window.env.API_URL}/calendar/delete/${deleteEvent}`,
         { headers }
       );
       // showing Notification

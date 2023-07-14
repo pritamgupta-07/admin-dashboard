@@ -47,7 +47,7 @@ const Team = () => {
   const getTeamData = useCallback(async () => {
     try {
       const teamResult = await axios.get(
-        `https://dashboard-cxq3.onrender.com/team/${access}`,
+        `${window.env.API_URL}/team/${access}`,
         {
           headers,
         }
@@ -71,7 +71,7 @@ const Team = () => {
       if (access === "admin") {
         await toast.promise(
           axios.delete(
-            `https://dashboard-cxq3.onrender.com/team/${access}/delete/${selectedTeamProfile._id}`,
+            `${window.env.API_URL}/team/${access}/delete/${selectedTeamProfile._id}`,
             {
               headers,
             }

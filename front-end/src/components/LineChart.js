@@ -25,7 +25,7 @@ const Line = ({ isDashboard = false }) => {
   const handleGetLineChart = useCallback(async () => {
     try {
       const response = await axios.get(
-        "https://dashboard-cxq3.onrender.com/line-chart",
+        `${window.env.API_URL}/line-chart`,
         {
           headers,
         }

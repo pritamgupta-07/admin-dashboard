@@ -61,7 +61,7 @@ const Profile = () => {
     try {
       const response = await toast.promise(
         axios.post(
-          `https://dashboard-cxq3.onrender.com/avatar/upload/${id}`,
+          `${window.env.API_URL}/avatar/upload/${id}`,
           formData,
           {
             headers,
@@ -101,7 +101,7 @@ const Profile = () => {
     try {
       const response = await toast.promise(
         axios.put(
-          `https://dashboard-cxq3.onrender.com/avatar/update/${avatarData.publicId}`,
+          `${window.env.API_URL}/avatar/update/${avatarData.publicId}`,
           formData,
           {
             headers,
@@ -135,7 +135,7 @@ const Profile = () => {
     try {
       await toast.promise(
         axios.delete(
-          `https://dashboard-cxq3.onrender.com/avatar/delete/${avatarData.publicId}`,
+          `${window.env.API_URL}/avatar/delete/${avatarData.publicId}`,
           {
             headers,
           }

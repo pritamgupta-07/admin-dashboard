@@ -73,12 +73,9 @@ const Dashboard = () => {
   // handling dashboard data request
   const handleDashboardData = useCallback(async () => {
     try {
-      const { data } = await axios.get(
-        "https://dashboard-cxq3.onrender.com/dashboard",
-        {
-          headers,
-        }
-      );
+      const { data } = await axios.get(`${window.env.API_URL}/dashboard`, {
+        headers,
+      });
 
       // updating data
       setDashboardData([
@@ -102,12 +99,9 @@ const Dashboard = () => {
   // handling transaction data request
   const handleTransactionData = useCallback(async () => {
     try {
-      const response = await axios.get(
-        "https://dashboard-cxq3.onrender.com/transactions",
-        {
-          headers,
-        }
-      );
+      const response = await axios.get(`${window.env.API_URL}/transactions`, {
+        headers,
+      });
       // updating data
       setTransactions(response.data);
     } catch (error) {
@@ -118,9 +112,8 @@ const Dashboard = () => {
 
   // updating dashboard component
   useEffect(() => {
-    // dashboard
     handleDashboardData();
-    // transaction
+
     handleTransactionData();
   }, [handleDashboardData, handleTransactionData]);
 
@@ -142,7 +135,7 @@ const Dashboard = () => {
                 data={dashboardData}
                 headers={csvHeaders}
                 filename="dashboard-report.csv"
-                style={{textDecoration: 'none'}}
+                style={{ textDecoration: "none" }}
               >
                 <Button
                   sx={{

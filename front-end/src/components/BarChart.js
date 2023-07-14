@@ -23,7 +23,7 @@ const Bar = ({ isDashboard = false }) => {
   // handling Bar Data request
   const handleGetBarData = useCallback(async () => {
     try {
-      const response = await axios.get("https://dashboard-cxq3.onrender.com/bar-chart", {
+      const response = await axios.get(`${window.env.API_URL}/bar-chart`, {
         headers,
       });
       // updating data

@@ -6,8 +6,9 @@
 /front-end/build
 /back-end/dist
 
-# config file
+# env config file
 /back-end/.env
+/front-end/.env
 
 # debug
 npm-debug.log*

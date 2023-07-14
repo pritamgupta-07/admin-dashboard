@@ -26,7 +26,7 @@ const Settings = () => {
   const handleChangePasswordEmail = async () => {
     try {
       await toast.promise(
-        axios.post("https://dashboard-cxq3.onrender.com/forgot-password", { email: email }),
+        axios.post(`${window.env.API_URL}/forgot-password`, { email: email }),
         {
           pending: "Sending an Email...",
           success: `An email has been sent to ${email}`,

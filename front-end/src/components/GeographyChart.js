@@ -24,7 +24,7 @@ const Geography = ({ isDashboard = false }) => {
   const handleGetGeoData = useCallback(async () => {
     try {
       const response = await axios.get(
-        "https://dashboard-cxq3.onrender.com/geography-chart",
+        `${window.env.API_URL}/geography-chart`,
         { headers }
       );
       // updating data
@@ -39,7 +39,7 @@ const Geography = ({ isDashboard = false }) => {
   const handleGetGeoFeaturesData = useCallback(async () => {
     try {
       const response = await axios.get(
-        "https://dashboard-cxq3.onrender.com/geography-features",
+        `${window.env.API_URL}/geography-features`,
         { headers }
       );
       // updating data

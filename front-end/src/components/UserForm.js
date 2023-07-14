@@ -85,7 +85,7 @@ const UserForm = ({
     try {
       if (access === "admin") {
         const response = await axios.post(
-          `https://dashboard-cxq3.onrender.com/team/${access}/create`,
+          `${window.env.API_URL}/team/${access}/create`,
           formData,
           { headers }
         );
@@ -116,7 +116,7 @@ const UserForm = ({
     try {
       if (access === "admin") {
         const response = await axios.put(
-          `https://dashboard-cxq3.onrender.com/team/${access}/update/${data._id}`,
+          `${window.env.API_URL}/team/${access}/update/${data._id}`,
           formData,
           { headers }
         );

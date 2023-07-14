@@ -27,7 +27,7 @@ const ResetPassword = ({ isChangePassword = false }) => {
       if (newPassword === confirmPassword) {
         const response = await toast.promise(
           axios.post(
-            `https://dashboard-cxq3.onrender.com/forgot-password/reset/${id}/${token}`,
+            `${window.env.API_URL}/forgot-password/reset/${id}/${token}`,
             { newPassword }
           ),
           { pending: "Updating password..." }

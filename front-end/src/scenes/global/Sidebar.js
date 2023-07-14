@@ -36,7 +36,7 @@ const SideBar = () => {
   const handleUserImage = useCallback(async () => {
     try {
       const response = await axios.get(
-        `https://dashboard-cxq3.onrender.com/avatar/${
+        `${window.env.API_URL}/avatar/${
           id ? id : "randomstring"
         }`,
         {

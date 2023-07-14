@@ -25,7 +25,7 @@ const Invoices = () => {
   // handling invoice api
   const handleGetInvoices = useCallback(async()=> {
     try {
-      const invoiceData = await axios.get("https://dashboard-cxq3.onrender.com/invoices",{headers});
+      const invoiceData = await axios.get(`${window.env.API_URL}/invoices`,{headers});
       // updating data
       setInvoices(invoiceData.data);
       setIsLoading(false);

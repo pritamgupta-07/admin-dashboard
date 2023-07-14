@@ -28,7 +28,7 @@ const ForgotPassword = () => {
     try {
       if (emailRegex.test(email)) {
         const response = await toast.promise(
-          axios.post("https://dashboard-cxq3.onrender.com/forgot-password", { email }),
+          axios.post(`${window.env.API_URL}/forgot-password`, { email }),
           {
             pending: "Sending an Email...",
           }
