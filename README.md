@@ -54,7 +54,7 @@ A simple mern stack dashboard web app with crud operation.
 - Run the following command to install the project dependencies:
 - > npm install
 
-- Create a (.env) file in backend folder.
+- Create a (.env) file in root folder.
 - Add configuration variables as required.
 
 - Start development server:
