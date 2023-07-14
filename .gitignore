@@ -9,6 +9,7 @@
 # env config file
 /back-end/.env
 /front-end/.env
+/front-end/public/env.js
 
 # debug
 npm-debug.log*
